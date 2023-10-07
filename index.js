@@ -6,6 +6,7 @@ const path = require("path");
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 app.use(express.json());
+app.use(express.urlencoded({extended: true}))
 
 // create method - POST  /items , body - {id,userName}
 app.post("/items", async (req, res) => {
