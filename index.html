@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUD</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      div {
+        padding: 8px;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <h1>CRUD - API Endpoints</h1>
+      <p><b>GET</b> /items , <b>description:</b> fetch all user details</p>
+      <p>
+        <b>GET</b> /items/{id} , <b>description:</b> fetch user details by id
+      </p>
+      <p>
+        <b>POST</b> /items , <b>description:</b> create user details in DB,
+        <b>body</b> - {id,userName}
+      </p>
+      <p>
+        <b>PUT</b> /items/{id} , <b>description:</b> update user userName using
+        id , <b>body</b> - {userName}
+      </p>
+      <p>
+        <b>DELETE</b> /items/{id} , <b>description:</b> delete user details by
+        id
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+org: ammar1
+app: crud-node-express
+service: crud
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - Fn::GetAtt: [UserTable, Arn]
+  environment:
+    USERS_TABLE: tbl_user
+
+functions:
+  api:
+    handler: index.handler
+    events:
+      - httpApi: "*"
+
+resources:
+  Resources:
+    UserTable:
+      Type: "AWS::DynamoDB::Table"
+      DeletionPolicy: Retain
+      Properties:
+        TableName: tbl_user
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
